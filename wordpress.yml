@@ -2,8 +2,12 @@
 - hosts: test
   become: yes
 
+  vars_files:
+    - group_vars/all_vault.yml
+
+
   roles:
-    - predeploy
-    - nginx    
-    - mysql
-    - wordpress
+    - { role: predeploy, tags: [predeploy]}
+    - { role: nginx, tags: [nginx]}   
+    - { role: mysql, tags: [mysql]}
+    - { role: wordpress, tags: [wordpress]}
